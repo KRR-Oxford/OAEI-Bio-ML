@@ -17,6 +17,7 @@ from typing import List
 from deeponto.align.bertmap import BERTMapPipeline
 from deeponto.utils import FileUtils
 import enlighten
+from collections import defaultdict
 
 
 def bertmap_predict(bertmap: BERTMapPipeline, src_class_labels: List[str], tgt_class_labels: List[str]):
@@ -36,7 +37,7 @@ def bertmap_ranking(
     test_cands = FileUtils.read_table(test_cands_file)
     enlighten_manager = enlighten.get_manager()
     progress_bar = enlighten_manager.counter(total=len(test_cands), desc="Mapping Prediction", unit="per src class")
-    result_dict = dict()
+    result_dict = defaultdict(dict)
 
     for _, dp in test_cands.iterrows():
         src_class_iri = dp["SrcEntity"]
