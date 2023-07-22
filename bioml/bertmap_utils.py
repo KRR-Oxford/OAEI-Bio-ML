@@ -36,7 +36,7 @@ def bertmap_ranking(
 ):
     test_cands = FileUtils.read_table(test_cands_file)
     enlighten_manager = enlighten.get_manager()
-    progress_bar = enlighten_manager.counter(total=len(test_cands), desc="Mapping Prediction", unit="per src class")
+    progress_bar = enlighten_manager.counter(total=len(test_cands), desc="Mapping Prediction", unit="per src class", leave=False)
     result_dict = defaultdict(dict)
 
     for _, dp in test_cands.iterrows():
