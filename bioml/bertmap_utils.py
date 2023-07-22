@@ -27,6 +27,7 @@ def bertmap_predict(bertmap: BERTMapPipeline, src_class_labels: List[str], tgt_c
 
 
 def bertmap_ranking(
+    bertmap: BERTMapPipeline,
     test_cands_file: str,
     src_annotation_index: dict,
     tgt_annotation_index: dict,
@@ -46,11 +47,11 @@ def bertmap_ranking(
         )
         for tgt_cand_iri in tgt_cands:
             bertmap_score, bertmaplt_score = bertmap_predict(
-                src_annotation_index[src_class_iri], tgt_annotation_index[tgt_cand_iri]
+                bertmap, src_annotation_index[src_class_iri], tgt_annotation_index[tgt_cand_iri]
             )
             result_dict[src_class_iri, tgt_class_iri][tgt_cand_iri] = (bertmap_score, bertmaplt_score)
             temp_progress_bar.update()
 
         progress_bar.update()
-    
+
     FileUtils.save_file(result_dict, result_file)
