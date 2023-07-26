@@ -7,13 +7,13 @@ This repository provides dataset pointer and evaluation scripts for the Bio-ML T
 ## Links
 
 - **Official OAEI Page**: <https://www.cs.ox.ac.uk/isg/projects/ConCur/oaei/index.html> 
-  - Results will be published on the OAEI webpage.
-- **Instructions of Use**: <https://krr-oxford.github.io/DeepOnto/bio-ml/> 
-  - Comprehensive documentation for Bio-ML.
+- **Detailed Documentation**: <https://krr-oxford.github.io/DeepOnto/bio-ml/> 
 - **Resource Paper**: <https://arxiv.org/abs/2205.03447>
 - **Dataset Download**:
     - **OAEI 2023**: to be released
     - **OAEI 2022**: <https://zenodo.org/record/6946466>
+
+> Results will be published on the OAEI webpage.
 
 ## Data Statistics
 
