@@ -16,7 +16,7 @@ def generate_subsumption_mappings(task_name: str):
     subs_gen = SubsFromEquivMappingGenerator(
         src_onto, tgt_onto, refs_equiv, 
         subs_generation_ratio=1,  # generate 1 subsumption mapping for each equivalence mapping
-        delete_used_equiv_tgt_class=False  # disable target class deletion 
+        delete_used_equiv_tgt_class=True  # enable target class deletion 
     )
     subs_df = pd.DataFrame(subs_gen.subs_from_equivs, columns=["SrcEntity", "TgtEntity", "Score"])
     train, test = train_test_split(subs_df, test_size=0.7)
