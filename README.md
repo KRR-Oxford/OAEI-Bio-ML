@@ -28,11 +28,11 @@ The changes compared to the previous version are reflected in the `+` numbers of
 
 | Source | Task        | Category | #SrcCls | #TgtCls | #TgtCls (subs) | #Ref (equiv) | #Ref (subs)  |
 |--------|:-----------:|:--------:|:-------:|:-------:|:--------------:|:------------:|:------------:|
-| Mondo  | OMIM-ORDO   | Disease  | 9,648 (+6)      | 9,275 (+437)    | 9,271 (+536) | 3,721 | 103   |
-| Mondo  | NCIT-DOID   | Disease  | 15,762 (+8,927) | 8,465 (+17)     | 5,722 (+609) | 4,684 | 3,339 | 
+| Mondo  | OMIM-ORDO   | Disease  | 9,648 (+6)      | 9,275 (+437)    | 9,271 (+536) | 3,721 | 3,709 (+3,606)   |
+| Mondo  | NCIT-DOID   | Disease  | 15,762 (+8,927) | 8,465 (+17)     | 5,722 (+609) | 4,684 | 4,677 (+1,338) | 
 | UMLS   | SNOMED-FMA  |Body | 34,418 (+10,236)|88,955 (+24,229)|88,648 (+20,081)| 7,256  | 5,506    |
-| UMLS   | SNOMED-NCIT |Pharm| 29,500 (+13,455)|22,136 (+6,886) |20,113 (+7,651) | 5,803  | 4,225    |
-| UMLS   | SNOMED-NCIT | Neoplas  | 22,971 (+11,700) | 20,247 (+6291) | 20,113 (+6,323) | 3,804 | 213|
+| UMLS   | SNOMED-NCIT |Pharm| 29,500 (+13,455)|22,136 (+6,886) |20,113 (+7,651) | 5,803  | 5676 (1,451) |
+| UMLS   | SNOMED-NCIT | Neoplas  | 22,971 (+11,700) | 20,247 (+6291) | 20,113 (+6,323) | 3,804 | 327 (+108) |
 
 </small>
 </center>
