@@ -27,6 +27,8 @@ train_file = f"{data_dir}/refs_subs/train.tsv"
 config.prompt.prompt_type = 'isolated'  # isolated, traversal, path
 config.test_type = 'evaluation'
 config.subsumption_type = 'named_class'
+
+# specify the annotation properties to use for the names
 config.tgt_label_property = ['http://www.w3.org/2000/01/rdf-schema#label']
 config.src_label_property = ['http://www.w3.org/2000/01/rdf-schema#label']
 
@@ -59,7 +61,7 @@ if USE_TRAIN_MAPPINGS:
         for line in train_lines:
             f.write('%s\n' % line)
 
-# BERTSubs evaluation
+# Run BERTSubs evaluation
 src_onto = Ontology(owl_path=config.src_onto_file)
 tgt_onto = Ontology(owl_path=config.tgt_onto_file)
 inter_pipeline = BERTSubsInterPipeline(src_onto=src_onto, tgt_onto=tgt_onto, config=config)
