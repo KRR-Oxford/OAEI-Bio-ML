@@ -27,6 +27,7 @@ train_file = f"{data_dir}/refs_subs/train.tsv"
 config.prompt.prompt_type = 'isolated'  # isolated, traversal, path
 config.test_type = 'evaluation'
 config.subsumption_type = 'named_class'
+config.fine_tune.output_dir = 'fine-tuned-bert-ncit-doid'
 
 # specify the annotation properties to use for the names
 config.tgt_label_property = ['http://www.w3.org/2000/01/rdf-schema#label']
