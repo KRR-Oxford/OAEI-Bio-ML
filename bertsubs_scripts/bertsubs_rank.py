@@ -12,12 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 from deeponto.onto import Ontology
-from deeponto.utils import FileUtils
+from deeponto.utils import load_file, read_table
 from yacs.config import CfgNode
 from deeponto.subs.bertsubs import BERTSubsInterPipeline, DEFAULT_CONFIG_FILE_INTER
 
 # Inputs
-config = CfgNode(FileUtils.load_file(DEFAULT_CONFIG_FILE_INTER))
+config = CfgNode(load_file(DEFAULT_CONFIG_FILE_INTER))
 USE_TRAIN_MAPPINGS = True
 data_dir = 'bio-ml/ncit-doid'
 config.src_onto_file = f"{data_dir}/ncit.owl"
@@ -35,7 +35,7 @@ config.src_label_property = ['http://www.w3.org/2000/01/rdf-schema#label']
 
 # Parse the testing candidate file and training file
 test_lines = list()
-test_cands = FileUtils.read_table(test_cands_file)
+test_cands = read_table(test_cands_file)
 for _, dp in test_cands.iterrows():
     src_class_iri = dp["SrcEntity"]
     tgt_class_iri = dp["TgtEntity"]
@@ -51,7 +51,7 @@ with open(config.test_subsumption_file, 'w') as f:
 
 if USE_TRAIN_MAPPINGS:
     train_lines = list()
-    train_data = FileUtils.read_table(train_file)
+    train_data = read_table(train_file)
     for _, dp in train_data.iterrows():
         src_class_iri = dp["SrcEntity"]
         tgt_class_iri = dp["TgtEntity"]

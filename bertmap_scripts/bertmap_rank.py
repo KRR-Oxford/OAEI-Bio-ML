@@ -13,7 +13,7 @@
 # limitations under the License.
 from deeponto.onto import Ontology
 from deeponto.align.bertmap import BERTMapPipeline, DEFAULT_CONFIG_FILE
-from deeponto.utils import FileUtils
+from deeponto.utils import read_table
 import enlighten
 from typing import List
 import pandas as pd
@@ -29,7 +29,7 @@ def bertmap_ranking(
     src_annotation_index: dict,
     tgt_annotation_index: dict
 ):
-    test_cands = FileUtils.read_table(test_cands_file)
+    test_cands = read_table(test_cands_file)
     enlighten_manager = enlighten.get_manager()
     progress_bar = enlighten_manager.counter(total=len(test_cands), desc="Mapping Prediction", unit="per src class")
     bertmap_results = []
