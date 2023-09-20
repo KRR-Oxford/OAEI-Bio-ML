@@ -28,6 +28,8 @@ config.prompt.prompt_type = 'isolated'  # isolated, traversal, path
 config.test_type = 'evaluation'
 config.subsumption_type = 'named_class'
 config.fine_tune.output_dir = 'fine-tuned-bert-ncit-doid'
+config.fine_tune.train_pos_dup = 1    # duplicate the positive subsumptions in sampling (1 means no duplication)
+config.fine_tune.train_neg_dup = config.fine_tune.train_pos_dup
 
 # specify the annotation properties to use for the names
 config.tgt_label_property = ['http://www.w3.org/2000/01/rdf-schema#label']
