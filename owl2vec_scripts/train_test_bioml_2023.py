@@ -17,6 +17,7 @@ parser.add_argument('--src_onto_file', type=str, default='../bertsubs_scripts/bi
 parser.add_argument('--tgt_onto_file', type=str, default='../bertsubs_scripts/bio-ml/ncit-doid/doid.owl')
 parser.add_argument('--eval_subsumption_file', type=str, default='../bertsubs_scripts/bio-ml/ncit-doid/refs_subs/test.cands.tsv')
 parser.add_argument('--train_mapping_file', type=str, default='None', help='../bertsubs_scripts/bio-ml/ncit-doid/refs_subs/train.tsv')
+parser.add_argument('--equiv_test_mapping_file', type=str, default='../bertsubs_scripts/bio-ml/ncit-doid/refs_equiv/test.tsv')
 parser.add_argument('--src_label_property', type=str, default='http://www.w3.org/2000/01/rdf-schema#label')
 parser.add_argument('--tgt_label_property', type=str, default='http://www.w3.org/2000/01/rdf-schema#label')
 parser.add_argument('--train_pos_dup', type=int, default=2)
@@ -59,7 +60,25 @@ src_subsumptions = [[subs[0].iri, subs[1].iri] for subs in src_onto.get_declared
 
 tgt_onto = MyOntology(onto_file=FLAGS.tgt_onto_file, label_property=[FLAGS.tgt_label_property])
 read_iri_embedding(onto=tgt_onto)
-tgt_subsumptions = [[subs[0].iri, subs[1].iri] for subs in tgt_onto.get_declared_named_class_subsumption()]
+
+if FLAGS.equiv_test_mapping_file == 'None':
+    tgt_subsumptions = [[subs[0].iri, subs[1].iri] for subs in tgt_onto.get_declared_named_class_subsumption()]
+
+# delete training subsumptions whose subclasses are in the target class set of the test equivalence mappings
+else:
+    to_delete_classes = set()
+    n = 0
+    with open(FLAGS.equiv_test_mapping_file) as f:
+        for line in f.readlines()[1:]:
+            tmp = line.strip().split('\t')
+            to_delete_classes.add(tmp[1])
+    tgt_subsumptions = list()
+    for subs in tgt_onto.get_declared_named_class_subsumption():
+        if subs[1].iri in to_delete_classes:
+            n += 1
+        else:
+            tgt_subsumptions.append([subs[0].iri, subs[1].iri])
+    print('%d training subsumptions avoided' % n)
 
 src_neg_subsumptions = list()
 for subs in src_subsumptions:
