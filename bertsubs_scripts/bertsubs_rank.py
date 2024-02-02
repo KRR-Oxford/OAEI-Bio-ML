@@ -14,7 +14,7 @@
 from deeponto.onto import Ontology
 from deeponto.utils import load_file, read_table
 from yacs.config import CfgNode
-from deeponto.subs.bertsubs import BERTSubsInterPipeline, DEFAULT_CONFIG_FILE_INTER
+from deeponto.complete.bertsubs import BERTSubsInterPipeline, DEFAULT_CONFIG_FILE_INTER
 
 # Inputs
 config = CfgNode(load_file(DEFAULT_CONFIG_FILE_INTER))
