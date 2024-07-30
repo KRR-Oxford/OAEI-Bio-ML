@@ -17,28 +17,9 @@ This repository provides dataset pointer and evaluation scripts for the Bio-ML T
 > Results will be published on the OAEI webpage.
 
 
-## Citation
+## Relevant Publications
 
-Bio-ML (Main Track)
+- [1] *Yuan He‚ Jiaoyan Chen‚ Hang Dong, Ernesto Jiménez-Ruiz, Ali Hadian and Ian Horrocks.* **Machine Learning-Friendly Biomedical Datasets for Equivalence and Subsumption Ontology Matching**. The 21st International Semantic Web Conference (ISWC-2022, **Best Resource Paper Candidate**). /[arxiv](https://arxiv.org/abs/2205.03447)/ /[iswc](https://link.springer.com/chapter/10.1007/978-3-031-19433-7_33)/  <a name="bioml_paper"></a>
+- [2] *Yuan He, Jiaoyan Chen, Hang Dong, and Ian Horrocks.* **Exploring Large Language Models for Ontology Alignment**. The 22nd International Semantic Web Conference (ISWC-2023 Posters & Demos). /[arxiv](https://arxiv.org/abs/2309.07172)/ /[iswc](https://hozo.jp/ISWC2023_PD-Industry-proc/ISWC2023_paper_427.pdf)/ <a name="llmap_paper"></a>
+- [3] *Yuan He, Jiaoyan Chen, Hang Dong, Ian Horrocks, Carlo Allocca, Taehun Kim, and Brahmananda Sapkota.* **DeepOnto: A Python Package for Ontology Engineering with Deep Learning.** arXiv preprint arXiv:2307.03067 (accepted by the Semantic Web Jouranl). /[arxiv](https://arxiv.org/abs/2307.03067)/
 
-```
-@inproceedings{he2022machine,
-  title={Machine Learning-Friendly Biomedical Datasets for Equivalence and Subsumption Ontology Matching},
-  author={He, Yuan and Chen, Jiaoyan and Dong, Hang and Jim{\'e}nez-Ruiz, Ernesto and Hadian, Ali and Horrocks, Ian},
-  booktitle={The Semantic Web--ISWC 2022: 21st International Semantic Web Conference, Virtual Event, October 23--27, 2022, Proceedings},
-  pages={575--591},
-  year={2022},
-  organization={Springer}
-}
-```
-
-Bio-LLM (Sub-track)
-
-```
-@article{he2023exploring,
-  title={Exploring large language models for ontology alignment},
-  author={He, Yuan and Chen, Jiaoyan and Dong, Hang and Horrocks, Ian},
-  journal={arXiv preprint arXiv:2309.07172},
-  year={2023}
-}
-```
