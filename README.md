@@ -19,6 +19,8 @@ This repository provides dataset pointer and evaluation scripts for the Bio-ML T
 
 ## Citation
 
+Bio-ML (Main Track)
+
 ```
 @inproceedings{he2022machine,
   title={Machine Learning-Friendly Biomedical Datasets for Equivalence and Subsumption Ontology Matching},
@@ -27,5 +29,16 @@ This repository provides dataset pointer and evaluation scripts for the Bio-ML T
   pages={575--591},
   year={2022},
   organization={Springer}
+}
+```
+
+Bio-LLM (Sub-track)
+
+```
+@article{he2023exploring,
+  title={Exploring large language models for ontology alignment},
+  author={He, Yuan and Chen, Jiaoyan and Dong, Hang and Horrocks, Ian},
+  journal={arXiv preprint arXiv:2309.07172},
+  year={2023}
 }
 ```
