@@ -1,0 +1,238 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+
+<title>OAEI::Bio-ML Track</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head><body>
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="http://oaei.ontologymatching.org/">Ontology
+  Alignment Evaluation Initiative</a>
+  <a href="http://oaei.ontologymatching.org/">
+  <img src="oaeismall.jpg" style="float: right; margin-left: 10pt; margin-right: 10pt; margin-bottom: 10pt; border-style: none;" width="175px"></a>
+  <!--a href="http://www.seals-project.eu/">
+<img src="Seals-logo-5.png" style="clear: right; float: right; margin-right: 20pt; margin-left: 10pt; margin-bottom: 10pt; border-style: none;" width="150px"></a-->
+</div>
+
+<!--
+<a href="http://www.cs.ox.ac.uk/isg/projects/LogMap/">
+<img src="../../LogMap/LM_logo.jpg" style="clear: right; float: right; margin-right: 10pt; margin-left: 10pt; border-style: none;" width="150px"></a>
+-->
+
+
+
+
+<h1>Bio-ML: A ML-friendly Biomedical track for Equivalence and Subsumption Matching</h1>
+
+<!--        A ML-friendly track for Equivalence and Subsumption Discovery among Biomedical Ontologies -->
+<!-- ML Supported Mondo-UMLS Track for Equivalence and Subsumption Ontology Matching -->
+
+<p>
+This track presents an unified evaluation framework suitable for both ML-based and non-ML-based OM systems. 
+The datasets of this track are based on <a href="https://mondo.monarchinitiative.org/">Mondo</a> and the <a href="http://www.nlm.nih.gov/research/umls/">UMLS Metathesaurus</a>.
+</p>
+
+<p>
+The 2022 edition involves the following ontologies: OMIM (Online Mendelian Inheritance in Man), ORDO (Orphanet Rare Disease Ontology), NCIT (National Cancer Institute Thesaurus) and DOID (Human Disease Ontology), FMA (Foundational Model of Anatyomy) and SNOMED CT.
+</p>
+<p>
+The 2023 edition adopts locality-based logic modules to enrich existing pruned ontologies with logical and structural context from their original versions. The added entities are annotated as "not used in alignment". A new special sub-track for Large Language Model-based OM systems, named Bio-LLM, is also introduced.
+</p>
+
+
+
+<h3>Editions</h3>
+
+<ul>
+<li>OAEI 2022: [<a href="./2022/">description</a> <!--<img src="new.png" width="28px">-->] [<a href="./2022/index.html#results">results</a> <!--<img src="new.png" width="28px">-->] <!--[<a href="./2021/results/largebio-mappings-2020.zip">alignments</a> <img src="new.png" width="28px">] --></li>
+</ul>
+
+<ul>
+<li>OAEI 2023: [<a href="./2023/index.html">description</a><img src="new.png" width="28px">] [<a href="./2023/index.html#results">results</a> <img src="new.png" width="28px">] </li>
+</ul>
+
+<br />
+
+
+<h3>Related publications</h3>
+
+<ul>
+<li>
+  Yuan He, Jiaoyan Chen, Hang Dong, Ernesto Jim&eacute;nez-Ruiz, Ali Hadian, Ian Horrocks. <b>Machine Learning-Friendly Biomedical Datasets for Equivalence and Subsumption Ontology Matching</b>. The 21st International Semantic Web Conference (ISWC 2022, <b>Best Resource Paper Candidate</b>). [<a href="https://arxiv.org/abs/2205.03447">paper</a>] [<a href="https://drive.google.com/file/d/1qENaOADEPpigYrmO8qOkOE6ycy0jiyNt/view">presentation</a>]
+</li>
+<li>
+  Yuan He, Jiaoyan Chen, Hang Dong, Ian Horrocks, Carlo Allocca, Taehun Kim, and Brahmananda Sapkota. <b>DeepOnto: A Python Package for Ontology Engineering with Deep Learning</b> arXiv preprint (2023). [<a href="https://arxiv.org/abs/2307.03067">paper</a>]
+</li>
+<li>
+  Yuan He, Jiaoyan Chen, Hang Dong, Ian Horrocks. <b>Exploring Large Language Models for Ontology Alignment</b> The 22nd International Semantic Web Conference (ISWC 2023 Posters and Demos). [<a href="https://arxiv.org/abs/2309.07172">paper</a>]
+</li>
+</ul>
+
+
+
+
+
+<!--
+<li>
+Ernesto Jimenez-Ruiz, Asan Agibetov, Matthias Samwald, Valerie Cross.
+<i>Breaking-down the Ontology Alignment Task with a Lexical Index and Neural Embeddings</i>. CoRR abs/1805.12402 (2018) <a href="https://arxiv.org/abs/1805.12402">[pdf]</a>
+</li>
+
+<li>
+Ernesto Jimenez-Ruiz, Asan Agibetov, Jiaoyan Chen, Matthias Samwald, Valerie Cross. 
+<i>Dividing the Ontology Alignment Task with Semantic Embeddings and Logic-based Modules</i>. 
+In the 24th European Conference on Artificial Intelligence (ECAI 2020).  <a href="https://arxiv.org/abs/2003.05370">[pdf]</a>
+</li>
+
+<li>Ernesto Jimenez-Ruiz, Bernardo Cuenca Grau and Ian Horrocks.
+<i>Is my ontology matching system similar to yours?</i>.  
+The 8th International Workshop on Ontology Matching.
+<a href="http://www.dit.unitn.it/~p2p/OM-2013/om2013_poster6.pdf">[pdf]</a>. 
+October 2013.
+</li>
+
+
+<li>Ernesto Jimenez-Ruiz, Christian Meilicke, Bernardo Cuenca Grau and Ian Horrocks.
+<i>Evaluating Mapping Repair Systems with Large Biomedical Ontologies</i>. In 
+26th International Workshop on Description Logics. 
+In <a href="http://ceur-ws.org/Vol-1014/paper_63.pdf">Volume 1014</a> of CEUR-WS.org. 
+July 2013.
+</li>
+
+
+<li>Catia Pesquita, Daniel Faria, Emanuel Santos, Francisco M. Couto. 
+<i>To repair or not to repair: reconciling correctness and coherence in ontology reference alignments</i>. 
+In OM 2013 workshop. <a href="http://www.dit.unitn.it/~p2p/OM-2013/om2013_Tpaper2.pdf">[pdf]</a>.
+October 2013.
+</li>
+
+
+<li>E. Jimenez-Ruiz, B. Cuenca Grau, I. Horrocks, and R. Berlanga.
+<i>Logic-based assessment 
+of the compatibility of UMLS ontology sources</i>. J Biomed. Sem. 2 (2011) 
+<a href="http://www.jbiomedsem.com/content/2/S1/S2">[url]</a></li>
+-->
+
+
+</ul>
+
+<!--
+
+<h4>OAEI results</h4>
+
+
+<ul>
+
+<li>
+<i>Results of the Ontology Alignment Evaluation Initiative 2020</i>. In: Ontology Matching Workshop (2020). 
+<a href="http://ceur-ws.org/Vol-2788/oaei20_paper0.pdf">Volume 2788</a> of CEUR-WS.org.
+October 2020.
+</li>
+
+<li>
+<i>Results of the Ontology Alignment Evaluation Initiative 2019</i>. In: Ontology Matching Workshop (2019). 
+<a href="http://ceur-ws.org/Vol-2536/oaei19_paper0.pdf">Volume 2536</a> of CEUR-WS.org.
+October 2019.
+</li>
+
+
+<li>
+<i>Results of the Ontology Alignment Evaluation Initiative 2018</i>. In: Ontology Matching Workshop (2018). 
+<a href="http://ceur-ws.org/Vol-2288/oaei18_paper0.pdf">Volume 2288</a> of CEUR-WS.org.
+October 2018.
+</li>
+
+
+<li>
+<i>Results of the Ontology Alignment Evaluation Initiative 2017</i>. In: Ontology Matching Workshop (2017). 
+<a href="http://ceur-ws.org/Vol-2032/oaei17_paper0.pdf">Volume 2032</a> of CEUR-WS.org.
+October 2017.
+</li>
+
+
+<li>
+<i>Results of the Ontology Alignment Evaluation Initiative 2016</i>. In: Ontology Matching Workshop (2016). 
+<a href="http://ceur-ws.org/Vol-1766/oaei16_paper0.pdf">Volume 1766</a> of CEUR-WS.org.
+October 2016.
+</li>
+
+<li>
+<i>Results of the Ontology Alignment Evaluation Initiative 2015</i>. In: Ontology Matching Workshop (2015). 
+<a href="http://ceur-ws.org/Vol-1545/oaei15_paper0.pdf">Volume 1545</a> of CEUR-WS.org.
+October 2015.
+</li>
+
+
+<li>
+<i>Results of the Ontology Alignment Evaluation Initiative 2014</i>. In: Ontology Matching Workshop (2014). 
+<a href="http://ceur-ws.org/Vol-1317/oaei14_paper0.pdf">Volume 1317</a> of CEUR-WS.org.
+October 2014.
+</li>
+
+
+<li>
+<i>Results of the Ontology Alignment Evaluation Initiative 2013</i>. 
+In: Ontology Matching Workshop (2013). <a href="http://ceur-ws.org/Vol-1111/oaei13_paper0.pdf">Volume 1111</a> of CEUR-WS.org.
+October 2013. 
+</li>
+
+
+<li>
+<i>Results of the Ontology Alignment Evaluation Initiative 2012</i>. 
+In: Ontology Matching Workshop (2012). <a href="http://ceur-ws.org/Vol-946/oaei12_paper0.pdf">Volume 946</a> of CEUR-WS.org.
+October 2012. 
+</li>
+
+<!--
+<li>C. Meilicke, O. Svab-Zamazal, C. Trojahn, E. Jimenez-Ruiz, J.L. Aguirre, H. Stuckenschmidt and B. Cuenca Grau.
+<i>Evaluating Ontology Matching Systems on Large, Multilingual and Real-world Test Cases</i>. 
+<a href="http://arxiv.org/abs/1208.3148v1">ArXiv e-prints, vol. 1208.3148</a>. August 2012.</li>
+
+<li>E. Jimenez-Ruiz, B. Cuenca Grau and I. Horrocks. <i>Exploiting the UMLS Metathesaurus in the Ontology Alignment Evaluation Initiative</i>.
+In 2nd International Workshop on Exploiting Large Knowledge Repositories (E-LKR). <a href="http://ceur-ws.org/Vol-882/">Volume 882 of CEUR-WS.org</a>. September 2012.</li>
+-->
+</ul>
+
+<br />
+
+
+<!--
+<h3>Contact</h3>
+
+<p>This track is organized by <a href="http://www.cs.ox.ac.uk/isg/people/ernesto.jimenez/">Ernesto Jimenez Ruiz</a> and 
+<a href="http://xldb.fc.ul.pt/~dfaria/">Daniel Faria</a>. 
+ 
+If you have any problems working with the ontologies or any suggestions 
+related to this track, feel free to write an email to ernesto [.] jimenez [.] ruiz [at] gmail [.] com</p>
+-->
+
+<br />
+
+<!--
+<h3>Acknowledgements</h3>
+
+<p>We would like to thank the participants and organisers of the OAEI campaigns, especially Christian Meilicke,
+for their help in the setting up of this track.</p>
+
+<p>
+We also thank <a href="http://www.cs.ox.ac.uk/isg/people/bernardo.cuencagrau/">Bernardo Cuenca Grau</a> and 
+<a href="http://www.cs.ox.ac.uk/isg/people/ian.horrocks/">Ian Horrocks</a> for their unvaluable help in past editions of this OAEI track.
+</p>
+
+<p>
+
+The track is currently supported by the <a href="http://sirius-labs.no/">SIRIUS Centre for Research-driven Innovation</a>. 
+The track was also supported in the past by the <a href="http://www.seals-project.eu/">SEALS</a>, 
+<a href="http://www.cs.ox.ac.uk/projects/LogMap/">LogMap</a>, <a href="http://www.optique-project.eu/">Optique</a> and <a href="https://www.turing.ac.uk/research/research-projects/artificial-intelligence-data-analytics-aida">AIDA</a> projects.
+
+</p>
+
+
+-->
+<br />
+<div class="address">
+<!--<div class="footer">http://www.cs.ox.ac.uk/isg/projects/ConCur/oaei/</div>-->
+<!--$Id$-->
+</div>
+</body></html>

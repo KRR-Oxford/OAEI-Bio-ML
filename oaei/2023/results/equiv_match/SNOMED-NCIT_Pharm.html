@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sort a HTML Table Alphabetically</title>
+<style>
+table {
+  border-spacing: 1;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th {
+  cursor: pointer;
+}
+
+th, td {
+  text-align: center;
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+</style>
+</head>
+<body>
+
+<table id="myTable">
+   <tr>
+   <th colspan="12"><center>Equivalence Matching Results for SNOMED-NCIT (Pharm)</center></th>
+   </tr>
+   <tr>
+   <th>&nbsp;</th>
+   <th colspan="5"><center>Unsupervised (No Train Maps)</center></th>
+   <th colspan="6"><center>Semi-supervised (Optional 30% Train Maps)</center></th>
+   </tr>
+   <tr>
+   <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->  
+    <th onclick="sortTable(0,3)">&#x21D5;System</th>
+    <th onclick="sortTable(1,3)">&#x21D5;Precision</th>
+    <th onclick="sortTable(2,3)">&#x21D5;Recall</th>
+    <th onclick="sortTable(3,3)">&#x21D5;F-score</th>
+    <th onclick="sortTable(4,3)">&#x21D5;MRR</th>
+    <th onclick="sortTable(5,3)">&#x21D5;Hits@1</th>
+    <th onclick="sortTable(6,3)">&#x21D5;Use Train Maps</th>
+    <th onclick="sortTable(7,3)">&#x21D5;Precision</th>
+    <th onclick="sortTable(8,3)">&#x21D5;Recall</th>
+    <th onclick="sortTable(9,3)">&#x21D5;F-score</th>
+    <th onclick="sortTable(10,3)">&#x21D5;MRR</th>
+    <th onclick="sortTable(11,3)">&#x21D5;Hits@1</th>
+  </tr>
+  <!-- Special symbols: &#8727; &dagger; &Dagger;-->
+  <tr>
+    <td>AMD<sup>&#8727;</sup></td>
+    <td>0.962</td>
+    <td>0.670</td>
+    <td>0.790</td>
+    <td></td>
+    <td></td>
+    <td>&#x2714;</td>
+    <td>0.952</td>
+    <td>0.746</td>
+    <td>0.836</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>BERTMap<sup>&Dagger;</sup></td>
+    <td>0.971</td>
+    <td>0.585</td>
+    <td>0.730</td>
+    <td>0.969</td>
+    <td>0.951</td>
+    <td>&#x2714;</td>
+    <td>0.898</td>
+    <td>0.715</td>
+    <td>0.796</td>
+    <td>0.971</td>
+    <td>0.953</td>
+  </tr>
+  <tr>
+    <td>BERTMapLt<sup>&Dagger;</sup></td>
+    <td>0.981</td>
+    <td>0.574</td>
+    <td>0.724</td>
+    <td>0.849</td>
+    <td>0.773</td>
+    <td>&#x2718;</td>
+    <td>0.973</td>
+    <td>0.569</td>
+    <td>0.718</td>
+    <td>0.849</td>
+    <td>0.773</td>
+  </tr>
+  <tr>
+    <td>LogMap<sup>&dagger;</sup></td>
+    <td>0.966</td>
+    <td>0.607</td>
+    <td>0.746</td>
+    <td></td>
+    <td></td>
+    <td>&#x2718;</td>
+    <td>0.952</td>
+    <td>0.603</td>
+    <td>0.738</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>LogMapBio<sup>&dagger;</sup></td>
+    <td>0.928</td>
+    <td>0.611</td>
+    <td>0.737</td>
+    <td></td>
+    <td></td>
+    <td>&#x2718;</td>
+    <td>0.899</td>
+    <td>0.606</td>
+    <td>0.724</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>LogMapLt<sup>&dagger;</sup></td>
+    <td>0.996</td>
+    <td>0.599</td>
+    <td>0.748</td>
+    <td></td>
+    <td></td>
+    <td>&#x2718;</td>
+    <td>0.994</td>
+    <td>0.594</td>
+    <td>0.743</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Matcha<sup>&dagger;</sup></td>
+    <td>0.987</td>
+    <td>0.607</td>
+    <td>0.752</td>
+    <td></td>
+    <td></td>
+    <td>&#x2718;</td>
+    <td>0.982</td>
+    <td>0.601</td>
+    <td>0.746</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Matcha-DL<sup>&#8727;</sup></td>
+    <td>0.904</td>
+    <td>0.616</td>
+    <td>0.733</td>
+    <td>0.931</td>
+    <td>0.917</td>
+    <td>&#x2714;</td>
+    <td>0.903</td>
+    <td>0.872</td>
+    <td>0.888</td>
+    <td>0.931</td>
+    <td>0.917</td>
+  </tr>
+  <tr>
+    <td>SORBETMtch<sup>&dagger;&#8727;</sup></td>
+    <td>0.973</td>
+    <td>0.607</td>
+    <td>0.748</td>
+    <td></td>
+    <td></td>
+    <td>&#x2714;</td>
+    <td>0.876</td>
+    <td>0.604</td>
+    <td>0.715</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<p>Note: OLaLa did not submit the results for the task.</p>
+
+<p>Note: Mixed results for SORBETMtch, where unsupervised results come from MELT and semi-supervised results come from direct result submission.  </p>
+
+<script>
+function sortTable(n,m) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = m; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      //document.write(rows[i].getElementsByTagName("TD").length);
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      //document.write(y.innerText);
+      //document.write("\t");
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>

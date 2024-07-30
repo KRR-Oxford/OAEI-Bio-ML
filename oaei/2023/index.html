@@ -1,0 +1,129 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+<title>OAEI 2023::Bio-ML Track</title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+</head><body>
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="http://oaei.ontologymatching.org/2023/">Ontology
+  Alignment Evaluation Initiative - OAEI-2023 Campaign</a>
+  <a href="http://oaei.ontologymatching.org/2023/">
+  <img src="../oaeismall.jpg" style="float: right; margin-left: 10pt; margin-right: 10pt; margin-bottom: 10pt; border-style: none;" width="175px"></a>  
+</div>
+
+ 
+
+<p><b><a href="../index.html">Bio-ML Track</a></b></p>
+
+
+<h1>OAEI 2023::Bio-ML Track</h1>
+
+
+<h2>General description</h2>
+
+The 2023 edition involves the following ontologies: OMIM (Online Mendelian Inheritance in Man), ORDO (Orphanet Rare Disease Ontology), NCIT (National Cancer Institute Thesaurus) and DOID (Human Disease Ontology), FMA (Foundational Model of Anatyomy) and SNOMED CT. Compared to the 2022 edition, we made the following key changes:
+
+<ul>
+  <li>Adopt <b>locality-based logic modules</b> to enrich existing pruned ontologies with logical and structural context from their original versions. The added entities are annotated as "not used in alignment".</li>
+  <li>Introduce a new special sub-track, <b>Bio-LLM</b> for Large Language Model-based OM systems.</li>
+  <li>Simplify the file structure and task settings to certain extent.</li>
+</ul>
+
+A <a href="https://krr-oxford.github.io/DeepOnto/bio-ml/#oaei-bio-ml-2023">complete description</a> is available at the Bio-ML documentation.
+
+
+
+<h2>Resources</h2>
+
+<ul>
+  <li>Dataset download: <a href="https://doi.org/10.5281/zenodo.8193375
+">Version OAEI Bio-ML 2023</a></li>
+  <li><a href="https://krr-oxford.github.io/DeepOnto/bio-ml">Comprehensive documentation for Bio-ML</a>, including every piece of information you need for understanding, using, and evaluating Bio-ML</li>
+  <li>Resource paper for Bio-ML: <a href="https://arxiv.org/abs/2205.03447">Machine Learning-Friendly Biomedical Datasets for Equivalence and Subsumption Ontology Matching</a> (ISWC 2022, Best Resource Paper Candidate)</li>
+  <li>Poster paper for Bio-LLM (and also the LLMap model): <a href="https://arxiv.org/abs/2309.07172">Exploring Large Language Models for Ontology Alignment</a> (ISWC 2023, Poster&Demos)</li>
+</ul>
+
+
+<h2>Evaluation</h2>
+
+Full details about the <a href="https://krr-oxford.github.io/DeepOnto/bio-ml/#evaluation-framework">evaluation framework</a> (global matching and local ranking) and the <a href="https://krr-oxford.github.io/DeepOnto/bio-ml/#oaei-participation">OAEI participation</a> (result format for each setting in the main Bio-ML track and the new Bio-LLM sub-track) are available at the Bio-ML documentation. <br>
+
+<p>We accept direct result submission via the <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWdxpPgRu6CQCWVm5agPyude9B0_5aQ6doixO52XHgCEmtKw/viewform?usp=sf_link">google form</a> with trust. We will also release results for systems based on our implementations and for systems submitted via MELT. These three categories will be specified on the result tables.</p>
+
+
+
+<h2>Results</h2>
+
+<p>Note: Click the column names (evaluation metrics) to sort the table; Cells with empty values suggest that the corresponding scores are not available. </p>
+
+<p>The super-script symbols indicate that the results come from <b>MELT-wrapped systems (&dagger;), our own implementations (&Dagger;), and direct result submission (&#8727;) </b>, respectively. It is important to notice that direct result submissions are based on <b>trust</b>.</p>
+
+<!-- <p>Note: New results of the submitted systems are being updated. </p> -->
+
+<h3>Bio-ML Equivalence Matching Results</h3>
+
+<p>For equivalence matching, we report both the global matching and local ranking results.</p>
+
+<p>For the <b>global matching</b> evaluation, the test mapping sets for unsupervised (not using training mappings) and semi-supervised (using training mappings) systems are <b>different</b>; the unsupervised test set is the full reference mapping set while the semi-supervised test set is the 70% reference mapping set (excluding 30% training mappings). Some systems may not use the training mappings (e.g., BERTMapLt, LogMap, etc.), but we still report their performances on the semi-supervised test set. The use of training mappings for the semi-supervised setting is indicated by &#x2714; (used) and &#x2718; (not used).
+
+<p>For the <b>local ranking</b> evaluation, we keep <b>one</b> ranking test set for both unsupervised and semi-supervised systems.</p>
+
+
+
+<embed type="text/html" src="results/equiv_match/OMIM-ORDO.html" width="1400" height=670">
+<embed type="text/html" src="results/equiv_match/NCIT-DOID.html" width="1400" height="670">
+<embed type="text/html" src="results/equiv_match/SNOMED-FMA_Body.html" width="1400" height="670">
+<embed type="text/html" src="results/equiv_match/SNOMED-NCIT_Pharm.html" width="1400" height="670">
+<embed type="text/html" src="results/equiv_match/SNOMED-NCIT_Neoplas.html" width="1400" height="670">
+
+<h3>Bio-ML Subsumption Matching Results</h3>
+
+<p>For subsumption matching, we report only the local ranking results as the subsumption mappings are inherently incomplete (see explanation in our resource paper).</p>
+
+<p>For the <b>local ranking</b> evaluation, we keep <b>one</b> ranking test set for both unsupervised (marked by &#x2718;) and semi-supervised (marked by &#x2714;) systems. </p>
+<p> (IC) indicates the isolated class setting of BERTSubs.
+<p>(del) indicates that the subsumptions in the target ontology, whose involved classes are among the target classes of the equivalence testing mappings, are deleted from the training samples.
+  This is to prevent the system from utilizing the equivalence mappings that are used to generate the subsumption mappings.</p>
+<p>For the <b>local ranking</b> evaluation, we keep <b>one</b> ranking test set for systems that use (marked by &#x2714;) and do not use (marked by &#x2718;)  the training mappings.</p>
+
+<embed type="text/html" src="results/subs_match/OMIM-ORDO.html" width="800" height="500">
+<embed type="text/html" src="results/subs_match/NCIT-DOID.html" width="800" height="500">
+<embed type="text/html" src="results/subs_match/SNOMED-FMA_Body.html" width="800" height="500">
+<embed type="text/html" src="results/subs_match/SNOMED-NCIT_Pharm.html" width="800" height="500">
+<embed type="text/html" src="results/subs_match/SNOMED-NCIT_Neoplas.html" width="800" height="500">
+
+
+<h3>Bio-LLM Results</h3>
+
+<p>For Bio-LLM, we report both matching and ranking results but with respect to the selected subsets.</p>
+
+<p>It is important to notice that since the evaluation is conducted on the subset of an OM dataset, the evaluation metrics are tailored to the settings. Check the <a href="https://krr-oxford.github.io/DeepOnto/bio-ml/#oaei-bio-llm-2023">Bio-LLM documentation</a> for full details.</p>
+
+<embed type="text/html" src="results/bio-llm/NCIT-DOID.html" width="1000" height="260">
+<embed type="text/html" src="results/bio-llm/SNOMED-FMA_Body.html" width="1000" height="260">
+
+<p>Note: The LLMap model was proposed along with the Bio-LLM dataset.</p>
+
+
+<h3>Organisers</h3>
+
+The Bio-ML track is organised by Yuan He, Jiaoyan Chen, Hang Dong, Ernesto Jim&eacute;nez-Ruiz and Ian Horrocks.
+
+
+
+
+
+<br />
+<br />
+
+
+<div class="address">
+<div class="footer">
+<!-- Contact: ernesto [.] jimenez [.] ruiz [at] gmail [.] com <br />-->
+<a href="http://www.cs.ox.ac.uk/isg/projects/ConCur/oaei/">http://www.cs.ox.ac.uk/isg/projects/ConCur/oaei/</a></div>
+<!--$Id$-->
+</div>
+</body></html>
+
+

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sort a HTML Table Alphabetically</title>
+<style>
+table {
+  border-spacing: 1;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th {
+  cursor: pointer;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+</style>
+</head>
+<body>
+
+<table id="myTable">
+   <tr>
+   <th colspan="6"><center>Subsumption Matching Results for OMIM-ORDO (Disease)</center></th>
+   </tr>
+   <tr>
+   <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->  
+    <th onclick="sortTable(0,2)">&#x21D5;System</th>
+    <th onclick="sortTable(1,2)">&#x21D5;Use Training Maps</th>
+    <th onclick="sortTable(2,2)">&#x21D5;MRR</th>
+    <th onclick="sortTable(3,2)">&#x21D5;Hits@1</th>
+    <th onclick="sortTable(4,2)">&#x21D5;Hits@5</th>
+    <th onclick="sortTable(5,2)">&#x21D5;Hits@10</th>
+  </tr>
+  <!-- Special symbols: &#8727; &dagger; &Dagger;-->
+  <tr>
+    <td>BERTSubs (IC)<sup>&Dagger;</sup></td>
+    <td>&#x2714;</td>
+    <td>0.433</td>
+    <td>0.278</td>
+    <td>0.597</td>
+    <td>0.833</td>
+  </tr>
+  <tr>
+    <td>BERTSubs (IC)<sup>&Dagger;</sup></td><td>&#x2718;</td>
+    <td>0.395</td><td>0.208</td><td>0.625</td><td>0.778</td>
+  </tr>
+    <!--
+    <tr>
+        <td>OWL2Vec* + RF</td><td>&#x2714;</td>
+        <td>0.506</td><td>0.333</td><td>0.722</td><td>0.819</td>
+    </tr>
+    -->
+    <tr>
+        <td>OWL2Vec* + RF<sup>&Dagger;</sup></td><td>&#x2718;</td>
+        <td>0.504</td> <td>0.333</td><td>0.714</td><td>0.811</td>
+    </tr>
+
+    <!--
+     <tr>
+        <td>Word2Vec + RF</td><td>&#x2714;</td>
+        <td>0.416</td><td>0.208</td><td>0.681</td><td>0.806</td>
+    </tr>
+    -->
+    <tr>
+      <td>SORBETMtch<sup>&#8727;</sup></td>
+      <td>&#x2714;</td>
+      <td>0.272</td>
+      <td>0.181</td>
+      <td>0.347</td>
+      <td>0.431</td>
+    </tr>
+    <tr>
+        <td>Word2Vec + RF<sup>&Dagger;</sup></td><td>&#x2718;</td>
+        <td>0.406</td> <td>0.167</td><td>0.764</td><td>0.792</td>
+    </tr>
+<!--
+    <tr>
+        <td>Word2Vec + RF (del)</td><td>&#x2714;</td>
+        <td>0.409</td><td>0.205</td><td>0.671</td><td>0.803</td>
+    </tr>
+    -->
+    <tr>
+        <td>Word2Vec + RF (del)<sup>&Dagger;</sup></td><td>&#x2718;</td>
+        <td>0.401</td> <td>0.194</td><td>0.681</td><td>0.782</td>
+    </tr>
+
+</table>
+
+
+<p>Note: (del) is a trial setting that uses the pruned target ontology similar to OAEI 2022.</p>
+
+<p>Note: OWL2Vec* uses structure, literal and mixture documents, without using pre-trained Word2Vec. RF indicates Random Forest Classifier with n_estimators=50. </p>
+
+
+
+
+<script>
+function sortTable(n,m) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = m; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      //document.write(rows[i].getElementsByTagName("TD").length);
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      //document.write(y.innerText);
+      //document.write("\t");
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>

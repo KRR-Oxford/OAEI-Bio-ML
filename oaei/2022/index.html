@@ -1,0 +1,157 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+<title>OAEI 2022::Bio-ML Track</title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+</head><body>
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="http://oaei.ontologymatching.org/2022/">Ontology
+  Alignment Evaluation Initiative - OAEI-2022 Campaign</a>
+  <a href="http://oaei.ontologymatching.org/2022/">
+  <img src="../oaeismall.jpg" style="float: right; margin-left: 10pt; margin-right: 10pt; margin-bottom: 10pt; border-style: none;" width="175px"></a>  
+</div>
+
+ 
+
+<p><b><a href="../index.html">Bio-ML Track</a></b></p>
+
+
+<h1>OAEI 2022::Bio-ML Track</h1>
+
+
+
+
+<p>
+<b>NEWS:</b>
+<ul>
+	<li><b><a href="#results">Results available now!</a></b></li>
+</ul>
+</p>
+</br>
+
+
+
+
+
+
+
+<h2>General description</h2>
+
+The 2022 edition involves the following ontologies: OMIM (Online Mendelian Inheritance in Man), ORDO (Orphanet Rare Disease Ontology), NCIT (National Cancer Institute Thesaurus) and DOID (Human Disease Ontology), FMA (Foundational Model of Anatyomy) and SNOMED CT.
+</br></br>
+Specifically, we have the following 5 ontology pairs for matching: OMIM-DOID, NCIT-DOID, SNOMED-FMA (Body), SNOMED-NCIT (Pharm) and SNOMED-NCIT (Neoplas).
+Each ontology pair has 4 concrete tasks: unsupervised and semi-supervised equivalence matching, unsupervised and semi-supervised subsumption matching.
+We welcome systems to participate either all of them, or only some of them.
+
+<!--
+<p>This track consists of finding alignments between the 
+<a href="http://sig.biostr.washington.edu/projects/fm/">Foundational Model of Anatomy</a> (FMA),
+<a href="http://www.ihtsdo.org/index.php?id=545">SNOMED CT</a>, 
+and the <a href="http://ncit.nci.nih.gov/">National Cancer Institute Thesaurus</a> (NCI). These ontologies are semantically rich and 
+contain tens of thousands of classes.</p>
+
+<p><a href="http://www.nlm.nih.gov/research/umls/">UMLS Metathesaurus</a> has been selected as the basis for the 
+track reference alignments.
+
+UMLS is currently the most comprehensive effort for integrating independently-developed medical thesauri and ontologies,
+including FMA, SNOMED CT, and NCI.  
+</p>
+
+
+<br>
+-->
+
+<h2>Resources</h2>
+
+Dataset download: <a href="https://doi.org/10.5281/zenodo.6946466">OAEI 2022 Version</a><br>
+Instructions of how to use and evaluate the dataset: <a href="https://krr-oxford.github.io/DeepOnto/bio-ml">Bio-ML Documentation</a><br>
+Resource paper for full details: <a href="https://arxiv.org/abs/2205.03447">Revised ArXiv Version</a>
+
+<h2>Evaluation</h2>
+
+<p>
+As the first edit of this track, we invite systems to directly upload the mapping results.
+Each unsupervised task has a validation mapping set (val.tsv), which can be used for system development, and a testing mapping set;
+  while each semi-supervised task has an additional training mapping set (train.tsv) which could be used for training for a system with ML modules.
+  In both kinds of tasks, a system will be evaluated according to the testing set. It should produce and upload a resulting file which includes the testing mappings in test.tsv, and/or another result file which ranks the candidate target classes for each source class in test.cands.tsv.
+</p>
+
+<p>All the result files of a system should be packaged (.zip or .tar.gz) and submitted via <a href="https://docs.google.com/forms/d/e/1FAIpQLSeKqDRy1HcyZ2mB3bu3w8JzQnQ5TyVHhaV2_cOE09TvNDdE3A/viewform">this form</a>.
+  Please select the included result files, or "None of above" for each ontology pair, in submitting the form.
+The deadline for result submission is <b>October 1, 2022.</b>
+</p>
+<!-- <p>
+With the results, we will then try to reproduce the results with the uploaded systems a bit later. The reproduced results will be tagged by a badger.
+</p> -->
+
+<h4>Submission File Requirements</h4>
+For each equivalence matching task, please submit one or both of the following two <i>TSV files with header</i> for the unsupervised (or semi-supervised) setting.
+</br></br>
+<li> A mapping file for <b>global matching</b> evaluation, where each line is a mapping with two classes (IRIs) and a score separated by a tab (see <a href="examples/global_matching_submission_example.tsv">example file</a>).
+</li>
+<li> A mapping ranking file for <b>local ranking</b> evaluation, where each line has an item of the source class, and another item of a ranked list of candidate target classes. Candidate target classes to rank are given in test.cands.tsv. Note not only the classes in the TgtCanddiates column but also the class in the TgtEntity column  should be included and ranked.
+  The ranked classes could have no score (see <a href="examples/local_ranking_submission_example1.tsv">example file with no score</a>) or be scored (see <a href="examples/local_ranking_submission_example2.tsv">example file with scores</a>).
+</li>
+
+</br></br>
+Each subsumption matching task only support <b>local ranking</b> evaluation, and thus only the mapping ranking file needs to be packaged and submitted for the unsupervised (or semi-supervised) setting.
+
+<h4>Metrics</h4>
+With the mapping file for global matching, we will calculate Precision, Recall and F1 Score; while with the mapping ranking file for local ranking evaluation, we will calculate Mean Reciprocal Rank (MRR) and Hits@K.
+
+<h2 id="results">Results</h2>
+
+<h3>Equivalence Matching</h3>
+
+<p>For equivalence matching, we report both the global matching and local ranking results.</p>
+
+<embed type="text/html" src="results/equiv_match/OMIM2ORDO.equiv.html" width="1200" height="600">
+<embed type="text/html" src="results/equiv_match/NCIT2DOID.equiv.html" width="1200" height="600">
+<embed type="text/html" src="results/equiv_match/SNOMED2FMA-Body.equiv.html" width="1200" height="600">
+<embed type="text/html" src="results/equiv_match/SNOMED2NCIT-Pharm.equiv.html" width="1200" height="600">
+<embed type="text/html" src="results/equiv_match/SNOMED2NCIT-Neoplas.equiv.html" width="1200" height="600">
+
+
+
+<h3>Subsumption Matching</h3>
+
+<p>For subsumption matching, we report only the local ranking results as the subsumption mappings are inherently incomplete (see details in our resource paper).</p>
+
+<embed type="text/html" src="results/subs_match/OMIM2ORDO.subs.html" width="1200" height="350">
+<embed type="text/html" src="results/subs_match/NCIT2DOID.subs.html" width="1200" height="350">
+<embed type="text/html" src="results/subs_match/SNOMED2FMA-Body.subs.html" width="1200" height="350">
+<embed type="text/html" src="results/subs_match/SNOMED2NCIT-Pharm.subs.html" width="1200" height="350">
+<embed type="text/html" src="results/subs_match/SNOMED2NCIT-Neoplas.subs.html" width="1200" height="350">
+
+
+<h3>Important Notes for Reproducibility</h3>
+<ul>
+  <li>Result mappings of LogMap, LogMap-Lite, ATMatcher, LSMatch, Matcha come from MELT. </li>
+  <li>Result mappings of BERTMap, BERTMap-Lite, Word2Vec, OWL2Vec*, BERTSubs come from implementations of the organisers. </li>
+  <li>Result mappings of AMD and Match-DL come from the participants directly.</li>
+  <li>All evaluations are conducted with the <a href="https://krr-oxford.github.io/DeepOnto/">DeepOnto</a> library.</li>
+</ul>
+
+
+<h3>Organisers</h3>
+
+The Bio-ML track is organised by Yuan He, Jiaoyan Chen, Hang Dong, Ernesto Jim&eacute;nez-Ruiz and Ian Horrocks.
+
+
+
+
+
+<br />
+<br />
+
+
+<div class="address">
+<div class="footer">
+<!-- Contact: ernesto [.] jimenez [.] ruiz [at] gmail [.] com <br />-->
+<a href="http://www.cs.ox.ac.uk/isg/projects/ConCur/oaei/">http://www.cs.ox.ac.uk/isg/projects/ConCur/oaei/</a></div>
+<!--$Id$-->
+</div>
+</body></html>
+
+

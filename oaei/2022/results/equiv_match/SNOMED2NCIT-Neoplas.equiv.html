@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sort a HTML Table Alphabetically</title>
+<style>
+table {
+  border-spacing: 1;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th {
+  cursor: pointer;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+</style>
+</head>
+<body>
+
+<table id="myTable">
+   <tr>
+   <th colspan="11"><center>Equivalence Matching Results for SNOMED-NCIT (Neoplas)</center></th>
+   </tr>
+   <tr>
+   <th>&nbsp;</th>
+   <th colspan="5"><center>Unsupervised (90% Test Mappings)</center></th>
+   <th colspan="5"><center>Semi-supervised (70% Test Mappings)</center></th>
+   </tr>
+   <tr>
+   <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->  
+    <th onclick="sortTable(0,3)">&#x21D5;System</th>
+    <th onclick="sortTable(1,3)">&#x21D5;Precision</th>
+    <th onclick="sortTable(2,3)">&#x21D5;Recall</th>
+    <th onclick="sortTable(3,3)">&#x21D5;F-score</th>
+    <th onclick="sortTable(4,3)">&#x21D5;MRR</th>
+    <th onclick="sortTable(5,3)">&#x21D5;Hits@1</th>
+    <th onclick="sortTable(6,3)">&#x21D5;Precision</th>
+    <th onclick="sortTable(7,3)">&#x21D5;Recall</th>
+    <th onclick="sortTable(8,3)">&#x21D5;F-score</th>
+    <th onclick="sortTable(9,3)">&#x21D5;MRR</th>
+    <th onclick="sortTable(10,3)">&#x21D5;Hits@1</th>
+  </tr>
+  <tr>
+    <td>LogMap</td>
+    <td>0.823</td>
+    <td>0.547</td>
+    <td>0.657</td>
+    <td>0.824</td>
+    <td>0.747</td>
+    <td>0.783</td>
+    <td>0.547</td>
+    <td>0.644</td>
+    <td>0.821</td>
+    <td>0.743</td>
+  </tr>
+  <tr>
+    <td>LogMap-Lite</td>
+    <td>0.947</td>
+    <td>0.520</td>
+    <td>0.671</td>
+    <td></td>
+    <td></td>
+    <td>0.932</td>
+    <td>0.519</td>
+    <td>0.667</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>AMD</td>
+    <td>0.836</td>
+    <td>0.534</td>
+    <td>0.652</td>
+    <td></td>
+    <td></td>
+    <td>0.792</td>
+    <td>0.528</td>
+    <td>0.633</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>BERTMap</td>
+    <td>0.655</td>
+    <td>0.777</td>
+    <td>0.711</td>
+    <td>0.960</td>
+    <td>0.939</td>
+    <td>0.575</td>
+    <td>0.784</td>
+    <td>0.664</td>
+    <td>0.965</td>
+    <td>0.947</td>
+  </tr>
+  <tr>
+    <td>BERTMap-Lite</td>
+    <td>0.815</td>
+    <td>0.709</td>
+    <td>0.759</td>
+    <td>0.900</td>
+    <td>0.876</td>
+    <td>0.775</td>
+    <td>0.713</td>
+    <td>0.743</td>
+    <td>0.900</td>
+    <td>0.876</td>
+  </tr>
+  <tr>
+    <td>Matcha-DL</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>0.956</td>
+    <td>0.615</td>
+    <td>0.748</td>
+    <td>0.654</td>
+    <td>0.640</td>
+  </tr>
+  <tr>
+    <td>Matcha</td>
+    <td>0.754</td>
+    <td>0.564</td>
+    <td>0.645</td>
+    <td></td>
+    <td></td>
+    <td>0.704</td>
+    <td>0.564</td>
+    <td>0.626</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>ATMatcher</td>
+    <td>0.866</td>
+    <td>0.284</td>
+    <td>0.428</td>
+    <td></td>
+    <td></td>
+    <td>0.835</td>
+    <td>0.286</td>
+    <td>0.426</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>LSMatch</td>
+    <td>0.902</td>
+    <td>0.238</td>
+    <td>0.377</td>
+    <td></td>
+    <td></td>
+    <td>0.877</td>
+    <td>0.238</td>
+    <td>0.374</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<p>Note: Click the column names (evaluation metrics) to sort the table; Cells with empty values suggest that the corresponding scores are not available.</p>
+
+<script>
+function sortTable(n,m) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = m; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      //document.write(rows[i].getElementsByTagName("TD").length);
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      //document.write(y.innerText);
+      //document.write("\t");
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>

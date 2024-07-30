@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sort a HTML Table Alphabetically</title>
+<style>
+table {
+  border-spacing: 1;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th {
+  cursor: pointer;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+</style>
+</head>
+<body>
+
+<table id="myTable">
+   <tr>
+   <th colspan="9"><center>Subsumption Matching Results for SNOMED-NCIT (Pharm)</center></th>
+   </tr>
+<!--    <tr>
+   <th>&nbsp;</th>
+   <th colspan="4"><center>Unsupervised (90% Test Mappings)</center></th>
+   <th colspan="4"><center>Semi-supervised (70% Test Mappings)</center></th>
+   </tr> -->
+   <tr>
+   <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->  
+    <th onclick="sortTable(0,2)">&#x21D5;System</th>
+    <th onclick="sortTable(1,2)">&#x21D5;Use Training Maps</th>
+    <th onclick="sortTable(2,2)">&#x21D5;MRR</th>
+    <th onclick="sortTable(3,2)">&#x21D5;Hits@1</th>
+    <th onclick="sortTable(4,2)">&#x21D5;Hits@5</th>
+    <th onclick="sortTable(5,2)">&#x21D5;Hits@10</th>
+<!--     <th onclick="sortTable(6,3)">&#x21D5;MRR</th>
+    <th onclick="sortTable(7,3)">&#x21D5;Hits@1</th>
+    <th onclick="sortTable(8,3)">&#x21D5;Hits@5</th>
+    <th onclick="sortTable(9,3)">&#x21D5;Hits@10</th> -->
+  </tr>
+  <tr>
+    <td>BERTSubs (IC)</td><td>&#x2714;</td>
+    <td>0.436</td><td>0.235</td><td>0.712</td><td>0.908</td>
+  </tr>
+  <tr>
+    <td>BERTSubs (IC)</td><td>&#x2718;</td>
+    <td>0.378</td><td>0.171</td><td>0.655</td><td>0.877</td>
+  </tr>
+    <!--
+    <tr>
+        <td>OWL2Vec* + RF</td><td>&#x2714;</td>
+        <td>0.460</td><td>0.251</td><td>0.753</td><td>0.926</td>
+    </tr>
+    -->
+    <tr>
+        <td>OWL2Vec* + RF</td><td>&#x2718;</td>
+        <td>0.448</td> <td>0.255</td><td>0.699</td><td>0.886</td>
+    </tr>
+
+    <!--
+    <tr>
+        <td>OWL2Vec* + RF (del)</td><td>&#x2714;</td>
+        <td>0.437</td><td>0.243</td><td>0.712</td><td>0.888</td>
+    </tr>
+    <tr>
+        <td>OWL2Vec* + RF (del)</td><td>&#x2718;</td>
+        <td>0.314</td> <td>0.177</td><td>0.433</td><td>0.612</td>
+    </tr>
+
+     <tr>
+        <td>Word2Vec + RF</td><td>&#x2714;</td>
+        <td>0.405</td><td>0.205</td><td>0.683</td><td>0.867</td>
+    </tr>
+    -->
+    <tr>
+      <td>SORBETMtch<sup>&#8727;</sup></td>
+      <td>&#x2714;</td>
+      <td>0.760</td>
+      <td>0.659</td>
+      <td>0.880</td>
+      <td>0.912</td>
+    </tr>
+    <tr>
+        <td>Word2Vec + RF</td><td>&#x2718;</td>
+        <td>0.355</td> <td>0.179</td><td>0.551</td><td>0.793</td>
+    </tr>
+
+    <!--
+    <tr>
+        <td>Word2Vec + RF (del)</td><td>&#x2714;</td>
+        <td>0.386</td><td>0.197</td><td>0.620</td><td>0.831</td>
+    </tr>
+    -->
+    <tr>
+        <td>Word2Vec + RF (del)</td><td>&#x2718;</td>
+        <td>0.276</td> <td>0.144</td><td>0.369</td><td>0.563</td>
+    </tr>
+
+</table>
+
+
+<p>Note: (del) is a trial setting that uses the pruned target ontology similar to OAEI 2022.</p>
+
+<p>Note: OWL2Vec* uses structure, literal and mixture documents, without using pre-trained Word2Vec. RF indicates Random Forest Classifier with n_estimators=50. </p>
+
+
+<script>
+function sortTable(n,m) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = m; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      //document.write(rows[i].getElementsByTagName("TD").length);
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      //document.write(y.innerText);
+      //document.write("\t");
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+body {
+	font-family: sans-serif;
+	color: black;
+	text-align: justify;
+	background-color: white;
+	//background: url(./img/oaei_tiny.jpg) right top no-repeat ;
+}
+
+div.header { color: grey; text-decoration: none; font-size: 80%; }
+
+span.logo {
+	float:right;
+	/* to be updated with the img size */
+	width:200px;
+	height:200px;
+	/*not implemented yet -> css3 */
+	background-image: url(./img/oaei_tiny.jpg);
+	background-position: right top;
+	background-repeat: no-repeat;	
+}
+
+h1 { font-size: 200%; }
+h2 { font-size: 160%; }
+h3 { font-size: 120%; }
+
+div.address {
+    font-size: 90%;
+    color: grey;
+}
+
+div.footer {
+    font-size: 90%;
+    text-align: center;
+    width:100%;
+    padding: 0.5em 0 0.5em 0em;
+    border-top: ridge grey;
+    border-bottom: ridge grey;
+}
+
+
+div.yellowbar{
+	text-align: center;
+	background-color: yellow;
+	width:100%;	
+}
+
+h1 {
+
+}
+a:link {  
+	color: #0074CA; 
+	text-decoration: none
+}
+
+a[href]:hover {  
+	color: #0074CA; 
+	text-decoration: none; 
+	background-color: #D3DBFE
+}
+a:visited {  
+	color: #0084E6; 
+	text-decoration: none
+}
+
+
+table {
+
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	
+}
+
+td {
+	text-align:center;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+td.right {
+	text-align:right;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+td.bright {
+	text-align:right;
+	font-weight: bold;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+td.nobot {
+	text-align:center;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-top: 1px solid black;
+	border-bottom: 0px;
+}
+
+td.notop {
+	text-align:center;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-top: 0px;
+	border-bottom: 1px solid black;
+}
+
+
+body {
+	margin:15px;
+}
+
+td.text {
+	text-align:left;
+	font-style: italic;
+	font-weight: bold;
+}
+
+td.bold {
+	font-weight: bold;
+}
+
+td.header {
+	text-align:center;
+	font-weight: bold;	
+}
+
+td.important {
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+
+td.bleft {
+	border-left: 1px solid black;
+}
+
+td.right {
+	border-right: 1px solid black;
+}
+
+td.total {
+	background-color:#DDD
+}
+
+td.italic {
+	font-style: italic;
+}
+
+
+
+tr.header td  {
+	background-color:#BFB;
+}
+
+tr.odd td  {
+	background-color:#FFD;
+}
+
+tr.even td  {
+	background-color:#DFF
+}
+
+tr.base td  {
+	background-color:#DDD
+}
+
+
+
+
+
+tr.red td  {
+	background-color:#FDF
+}
+
+tr.blue td  {
+	background-color:#CCF
+}
+
+tr.break td  {
+	background-color:#EEE;
+}
+
+
+span.small {
+	font-size:smaller;
+}
+
+caption {
+	caption-side:bottom;
+} 
+
+
+div.testsuite {
+	width:50%;
+	background-color:#CFF;
+	border-width:1px;
+	border-style:solid;
+}
+
+div.testsuite span.title {
+	font-weight:bold;
+}
+
+div.testsuite span.testsuiteid {
+	font-family:monospace;
+	font-size:14;
+}
+
+
+
